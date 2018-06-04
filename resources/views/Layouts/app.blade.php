@@ -38,53 +38,51 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="margin-bottom:0px">
           <!-- Navbar Brand, should be changed by the logo later-->
-          <a class="navbar-brand" href="{{ url('/') }}">
-              {{ config('app.name', 'Laravel') }}
-          </a>
 
-            <div class="container">
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 150%; height: 50%">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto " style="float: right;width: 70%; height: 50%">
                       @guest
-                        <button type="button" id="login-drop-down" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" href="{{ route('login') }}">{{ __('ساحة الكشاف') }} <span class="carret"></span></button>
-                          <ul class="dropdown-menu dropdown-menu-left mt-2 bg-secondary">
+                        <button type="button" id="login-drop-down" data-toggle="dropdown" class="btn btn-primary dropdown-toggle " href="{{ route('login') }}" style="font-size: medium" > {{ __('ساحة الكشاف') }} <span class="carret"></span></button>
+                          <ul class="dropdown-menu dropdown-menu-left mt-2 bg-secondary" style="width: 50%" >
                              <li class="px-3 py-2">
                                <!-- this is the login form -->
-                               <div class="card">
-                               <div class="card-body">
+                               <div class="card" >
+                               <div class="card-body" >
                                    <form method="POST" action="{{ route('login') }}">
                                        @csrf
 
-                                       <div class="form-group row">
-                                           <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('البـــريد الالكتروني') }}</label>
+                                       <div class="form-group row" >
+                                           <label for="email" class="col-sm-4 col-form-label text-md-right" style="font-size: medium">{{ __('البـــريد الالكتروني') }}</label>
 
                                            <div class="col-md-6">
-                                               <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                               <input id="email" type="email"  style="font-size: medium" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                                @if ($errors->has('email'))
                                                    <span class="invalid-feedback">
-                                                       <strong>{{ $errors->first('email') }}</strong>
+                                                       <strong style="font-size: medium" >{{ $errors->first('email') }}</strong>
                                                    </span>
                                                @endif
                                            </div>
                                        </div>
 
                                        <div class="form-group row">
-                                           <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('كلــمة السر') }}</label>
+                                           <label for="password" class="col-md-4 col-form-label text-md-right" style="font-size: medium" >{{ __('كلــمة السر') }}</label>
 
                                            <div class="col-md-6">
-                                               <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                               <input id="password" type="password" style="font-size: medium"  class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                                @if ($errors->has('password'))
                                                    <span class="invalid-feedback">
-                                                       <strong>{{ $errors->first('password') }}</strong>
+                                                       <strong style="font-size: medium" >{{ $errors->first('password') }}</strong>
                                                    </span>
                                                @endif
                                            </div>
@@ -93,8 +91,8 @@
                                        <div class="form-group row">
                                            <div class="col-md-6 offset-md-4">
                                                <div class="checkbox">
-                                                   <label>
-                                                       <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('تذكرني على هذا الجهاز') }}
+                                                   <label style="font-size: small" >
+                                                       <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} > {{ __('تذكرني على هذا الجهاز') }}
                                                    </label>
                                                </div>
                                            </div>
@@ -102,13 +100,14 @@
 
                                        <div class="form-group row mb-0">
                                            <div class="col-md-8 offset-md-4">
-                                               <button type="submit" class="btn btn-primary">
+                                               <a class="btn btn-link" href="{{ route('password.request') }}" style="font-size: small" >
+                                                   {{ __('نسيت كلمة المرور؟') }}
+                                               </a>
+                                               <button type="submit" class="btn btn-primary" style="font-size: medium">
                                                    {{ __('تسجيل الدخول') }}
                                                </button>
 
-                                               <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                   {{ __('نسيت كلمة المرور؟') }}
-                                               </a>
+
                                            </div>
                                        </div>
                                    </form>
@@ -145,19 +144,74 @@
                     <!-- Middle of Navbar -->
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <li> <a class="nav-link">عنوان</a> </li>
-                        <li> <a class="nav-link">عنوان</a> </li>
-                        <li> <a class="nav-link">عنوان</a> </li>
-                        <li> <a class="nav-link">عنوان</a> </li>
+                    <ul class="navbar-nav ml-auto align-self-end">
+
+                        <li class="nav-item">
+                            <!-- this is the about link -->
+                            <a class="nav-link {{ Route::currentRouteNamed('about') ? 'active' : '' }}" href="/about" style="font-size: large ;margin-right: 8px;">تعرف علينا</a>
+                        </li>
+                        <!-- this is the groups dropdown button -->
+                        <li class="nav-item  dropdown mega-dropdown " style="margin-right: 10px">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: large ;margin-right: 8px;margin-left: 8px">الأفواج</a>
+                            <div class="dropdown-menu align-items-center" aria-labelledby="dropdown04">
+                                <table >
+                                    <tr>
+                                        <td>
+                                            <img src="/images/jawala.png" width="20" height="20" style="margin-left: 30px">
+                                            <a class="dropdown-item" style="text-align:center ;font-size: large"  href="#" >الكشاف</a>
+                                        </td>
+
+                                        <td>
+                                            <img src="/images/jawala.png" width="20" height="20" style="margin-left: 30px">
+                                            <a class="dropdown-item align-items-center" style="text-align:center ;font-size: large" href="#">الأشبال</a>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr >
+                                        <td>
+                                            <img src="/images/jawala.png" width="20" height="20" style="margin-left: 30px">
+                                            <a class="dropdown-item" style="text-align:center ;font-size: large"  href="#">الجوالة</a>
+                                        </td>
+                                        <td >
+                                            <img src="/images/motakadim.png" width="20" height="20" style="margin-left: 30px; position: center">
+                                            <a class="dropdown-item align-items-center" style="text-align:center ;font-size: large" href="#">المتقدم</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td></td>
+
+                                        <td style="margin: 50%">
+                                            <img src="/images/jawala.png" width="20" height="20" style="margin-left: 30px">
+                                            <a class="dropdown-item" style="text-align:center ;font-size: large"  href="#">القادة</a>
+                                        </td>
+                                        <td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </li>
+                        <li class="nav-item" >
+                            <!-- this is the news link -->
+                            <a class="nav-link" href="#" style="font-size: large ;margin-right: 8px;margin-left: 8px">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- this is the index link -->
+                            <a class="nav-link {{ Route::currentRouteNamed('index') ? 'active' : '' }}" href="/" style="font-size: large ;margin-right: 8px;margin-left: 8px">الرئيسية</a>
+                        </li >
+
+                        <li class="nav-item" ><a class="nav-link" href="/"><img src="{{ asset('images/falah.png') }}" width="35" height="35"></img></a></li>
                     </ul>
+
                 </div>
-            </div>
+
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+
     </div>
 </body>
 </html>

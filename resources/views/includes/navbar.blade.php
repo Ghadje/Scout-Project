@@ -1,5 +1,5 @@
 <!-- this is the navbar all our pages, Not currently in use-->
-<nav class="navbar navbar-expand-md navbar-light bg-light nav-tabs">
+<nav class="navbar navbar-expand-md navbar-light bg-light nav-tabs" style="margin-bottom:0px">
   <!-- this button is for mobile phones -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -58,8 +58,11 @@
           <!-- this is the index link -->
           <a class="nav-link {{ Route::currentRouteNamed('index') ? 'active' : '' }}" href="/">الرئيسية</a>
         </li>
+          <li class="nav-link  align-self-end">
+
+          </li>
       </ul>
     </div>
     <!-- this is the website Logo -->
-    <a class="navbar-brand" href="/"><img src="{{ asset('images/falah.png') }}" width="35" height="35"></img></a>
+
   </nav>
